@@ -1,18 +1,20 @@
 <template>
   <table>
-    <JTableRow
-      v-for="(values, index) in items"
-      :key="index"
-      :values="values"
-    />
+    <tr>
+      <th v-for="(label, index) in header" :key="index">{{ label }}</th>
+    </tr>
+    <JTableRow v-for="(values, index) in items" :key="index" :values="values"/>
   </table>
 </template>
 
 <script>
-import JTableRow from '@webnostix/j-table-row/JTableRow'
+import JTableRow from "@webnostix/j-table-row/JTableRow";
 export default {
-  name: 'JTable',
+  name: "JTable",
   props: {
+    header: {
+      type: Array
+    },
     items: {
       type: Array,
       required: true
@@ -21,5 +23,14 @@ export default {
   components: {
     JTableRow
   }
-}
+};
 </script>
+
+<style scoped>
+th {
+  text-align: left;
+  padding: 8px;
+  font-size: 13px;
+  color: #8d8d92;
+}
+</style>
